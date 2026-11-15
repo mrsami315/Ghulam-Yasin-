@@ -1,0 +1,33 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() { return request.auth != null; }
+    function isAdmin() {
+      return signedIn()
+        && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == "admin";
+    }
+    match /users/{uid} {
+      allow read: if signedIn() && (request.auth.uid == uid || isAdmin());
+      // Profiles and roles are created/changed only by the project administrator.
+      allow write: if false;
+    }
+    match /attendance/{recordId} {
+      allow read: if signedIn() && (resource.data.uid == request.auth.uid || isAdmin());
+      allow create: if signedIn()
+        && request.resource.data.uid == request.auth.uid
+        && recordId == request.auth.uid + "_" + request.resource.data.date
+        && request.resource.data.keys().hasOnly(['uid','staffName','date','checkIn','checkOut','status','createdAt'])
+        && request.resource.data.staffName is string
+        && request.resource.data.date is string
+        && request.resource.data.checkIn is string
+        && request.resource.data.checkOut == null
+        && request.resource.data.status == "Present";
+      allow update: if signedIn()
+        && resource.data.uid == request.auth.uid
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['checkOut'])
+        && resource.data.checkOut == null
+        && request.resource.data.checkOut is string;
+      allow delete: if isAdmin();
+    }
+  }
+}
