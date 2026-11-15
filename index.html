@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#07152f"><title>Haider School | Staff Attendance</title>
+<style>
+:root{--navy:#07152f;--panel:#101f3e;--panel2:#16294d;--cyan:#62d7e8;--muted:#9aabc9;--white:#f5f8ff;--line:#263b60}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 80% 0,#18365f 0,transparent 35%),var(--navy);font:15px/1.5 Inter,system-ui,Arial;color:var(--white);min-height:100vh}
+header{padding:22px clamp(18px,5vw,60px);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{display:flex;gap:13px;align-items:center}.logo{width:46px;height:46px;border-radius:14px;background:linear-gradient(135deg,#6ee7f5,#3776c9);display:grid;place-items:center;color:#06142d;font-weight:900;font-size:20px;box-shadow:0 8px 24px #42c8e755}
+h1{font-size:17px;margin:0}header p{margin:2px 0 0;color:var(--muted);font-size:12px}.tag{border:1px solid #365477;color:#b7d5ff;border-radius:99px;padding:6px 11px;font-size:11px}
+main{max-width:1100px;margin:auto;padding:34px 18px 70px}.intro{margin-bottom:24px}.eyebrow{color:var(--cyan);text-transform:uppercase;letter-spacing:2px;font-size:11px;font-weight:800}.intro h2{font-size:clamp(27px,5vw,42px);line-height:1.12;margin:8px 0}.intro p{color:var(--muted);max-width:680px;margin:0}
+.notice{background:#392d1b;border:1px solid #806333;color:#ffe4ad;padding:13px 16px;border-radius:13px;margin:22px 0;font-size:13px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:20px 0}.stat,.card{background:linear-gradient(145deg,#142748,#0d1b36);border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:0 14px 34px #0002}.stat span{color:var(--muted);font-size:12px}.stat strong{display:block;font-size:28px;margin-top:6px}
+.layout{display:grid;grid-template-columns:1.1fr .9fr;gap:16px}.card h3{margin:0 0 14px;font-size:17px}.field{display:block;margin:12px 0;color:#b7c7e2;font-size:12px}input,select{width:100%;padding:12px 13px;margin-top:6px;border-radius:10px;border:1px solid #31496e;background:#091832;color:white;outline:none}button{border:0;border-radius:10px;background:linear-gradient(120deg,#68e0ec,#5b9df2);color:#06142d;font-weight:800;padding:12px 17px;cursor:pointer}button.secondary{background:#1b3155;color:#dceaff;border:1px solid #395579}button:disabled{opacity:.5;cursor:not-allowed}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}.status{color:var(--muted);font-size:13px;margin-top:12px}
+table{width:100%;border-collapse:collapse;font-size:13px}th,td{text-align:left;padding:11px 8px;border-bottom:1px solid var(--line)}th{color:var(--muted);font-weight:600}
+footer{color:#8195b8;font-size:12px;text-align:center;padding:25px}
+@media(max-width:760px){.grid{grid-template-columns:1fr}.layout{grid-template-columns:1fr}header{align-items:flex-start}.tag{display:none}main{padding-top:26px}}
+</style></head>
+<body>
+<header><div class="brand"><div class="logo">H</div><div><h1>Haider Model Computerized Public Boys School</h1><p>Haiderabad Thall · PEF Code: 9-BHK-0002</p></div></div><span class="tag">STAFF ATTENDANCE PORTAL · PREVIEW</span></header>
+<main>
+<section class="intro"><div class="eyebrow">School administration</div><h2>Staff Attendance<br>Management</h2><p>A clean attendance dashboard concept for daily staff check-in, check-out and monthly reporting.</p></section>
+<div class="notice"><b>Preview mode — not yet connected to a secure online database.</b><br>Do not enter real staff names, passwords or attendance records here. Secure staff accounts, cloud storage and administrator access must be configured before operational use.</div>
+<div class="grid"><div class="stat"><span>Today's attendance</span><strong>—</strong></div><div class="stat"><span>Staff registered</span><strong>—</strong></div><div class="stat"><span>Monthly report</span><strong>Ready after setup</strong></div></div>
+<div class="layout">
+<section class="card"><h3>Attendance entry preview</h3>
+<label class="field">Staff name<input id="staff" placeholder="Enter staff name (demo only)"></label>
+<label class="field">Date<input id="date" type="date"></label>
+<label class="field">Attendance status<select id="state"><option>Present</option><option>Late</option><option>On leave</option></select></label>
+<div class="actions"><button disabled>Check in</button><button class="secondary" disabled>Check out</button></div><p class="status">Actions will be enabled after secure authentication and database setup.</p>
+</section>
+<section class="card"><h3>System modules</h3><table><tbody>
+<tr><td>Admin & staff login</td><td>Pending secure setup</td></tr><tr><td>Daily attendance</td><td>UI preview</td></tr><tr><td>Check-in / check-out</td><td>Pending backend</td></tr><tr><td>Monthly summaries</td><td>Pending backend</td></tr><tr><td>Excel / PDF export</td><td>Pending backend</td></tr><tr><td>Role-based permissions</td><td>Pending backend</td></tr>
+</tbody></table></section></div>
+</main><footer>Haider School Attendance · Secure production setup required before real use</footer>
+<script>document.getElementById('date').value=new Date().toISOString().slice(0,10)</script>
+</body></html>
